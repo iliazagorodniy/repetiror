@@ -33,7 +33,7 @@ class ApiPublicMethods {
 	// нужен минимум один параметр
 	getTeacherIds( areaId= "1", districtId= "", subjectId= "" ) {
 		return this.adapter.get(`/search/teacherIds?${ serialize( { areaId, districtId, subjectId } ) }`)
-			.then(response => response.json)
+			.then(response => response.json())
 			.then((data) => {
 				return data
 			})
@@ -42,16 +42,19 @@ class ApiPublicMethods {
 	// https://api.repetit.ru/public/teachers/short?Ids[0]=77475&Ids[1]=258
 	// принимает get-параметр массив ID учителей, не принимает данные
 	getTeachersShort( teachersIdsArr ) {
-		let teachersIdsObj = {}
-		teachersIdsArr.forEach((item, index) => {
-			teachersIdsArr[`Ids[${index}]`] = item
-		})
-		console.log(teachersIdsObj)
-		return this.adapter.get(`teachers/short?${ serialize(teachersIdsObj) }`)
-			.then(response => response.json)
-			.then((data) => {
-				return data
+		console.log(teachersIdsArr)
+		if (teachersIdsArr) {
+			let teachersIdsObj = {}
+			teachersIdsArr.forEach((item, index) => {
+				teachersIdsObj[`Ids[${index}]`] = item
 			})
+			console.log(teachersIdsObj)
+			return this.adapter.get(`/teachers/short?${ serialize(teachersIdsObj) }`)
+				.then(response => response.json())
+				.then((data) => {
+					return data
+				})
+		}
 	}
 
 
