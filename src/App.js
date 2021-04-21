@@ -1,5 +1,6 @@
 import './App.css';
 import apiPublicMethods from "./HttpMethods/ApiPublicMethods";
+import TeachersList from "./components/TeachersList"
 
 import React, {Component} from 'react';
 import {Button, TextField} from "@material-ui/core";
@@ -177,21 +178,11 @@ class App extends Component {
 						/>
 						<Button size={"small"} variant={"outlined"} style={{width: 192}} className={"button"} onClick={this.handleApplyFilter}>Применить фильтр</Button>
 					</div>
-					<LinearProgress variant={"query"} style={ this.state.isDataLoading ? {display: "block"} : {display: "none"}}/>
+					<LinearProgress style={ this.state.isDataLoading ? {display: "block"} : {display: "none"}} classes={{
+						root: "linearProgress"
+					}}/>
 					<div style={ this.state.validationMessage === "" ? {display: "none"} : {display: "block"}}>{this.state.validationMessage}</div>
-					<div className="teachersContainer">
-						{this.state.currentTeachers.length === 0
-							? ""
-							: this.state.currentTeachers.map((item) => {
-								return (
-									<div key={item.id} className={"teacherCard"}>
-										<img src={item.photoPathSquare}/>
-										{item.firstName} {item.patrName} {item.minPricePerHour}
-									</div>
-								)
-							})
-						}
-					</div>
+					<TeachersList indexToLoadNextTeachersIdsArr={this.state.indexToLoadNextTeachersIdsArr} currentTeachers={this.state.currentTeachers}/>
 					<Button
 						variant={"outlined"}
 						color={"primary"}

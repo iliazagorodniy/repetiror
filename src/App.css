@@ -11,37 +11,44 @@
     justify-content: center;
     margin: 10px;
 }
-
-.filters > div {
-    margin-right: 10px;
-}
-
-.filters > button {
-    color: #fff;
-    background-color: #06b0a6;
-    width: max-content;
-}
-
-.filters > button:hover {
-    background-color: #009990;
-}
+    .filters > div {
+        margin-right: 10px;
+    }
+    .filters > button {
+        color: #fff;
+        background-color: #06b0a6;
+        min-width: max-content;
+    }
+        .filters > button:hover {
+            background-color: #009990;
+        }
 
 .teachersContainer {
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: calc(100vh - 134px);
-    margin: 0 140px;
+    align-self: center;
     padding: 8px;
+    max-width: 100%;
 }
-    .teachersContainer .teacherCard:nth-child(1) {
-        margin-top: 0;
-    }
+
+::-webkit-scrollbar {
+    height: 3px;
+    width: 6px;
+    border-radius: 4px;
+    background-color: rgba(200, 200, 200, 0.5);
+}
+::-webkit-scrollbar-thumb {
+    background-color: #00827c;
+    border-radius: 4px;
+}
 
 .teacherCard {
-    height: 110px;
+    height: 100px;
+    min-width: 720px;
     box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     margin: 20px 0;
-    padding: 0 10px;
+    padding: 10px 16px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -51,9 +58,65 @@
         width: 78px;
         height: 78px;
         border-radius: 39px;
+        margin-right: 16px;
     }
+        .teacherInfo {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            flex-direction: column;
+            justify-content: space-evenly;
+            overflow: hidden;
+        }
+            .subjects {
+                display: flex;
+                flex-wrap: nowrap;
+                align-items: center;
+                width: 100%;
+                max-width: 720px;
+                overflow-x: auto;
+                overflow-y: hidden;
+                padding: 4px 0;
+            }
+            .subject {
+                margin-right: 5px;
+            }
 
 .loadMore {
     width: max-content;
     align-self: center;
+}
+
+.linearProgress {
+    margin: 10px 10px 20px;
+}
+
+@media screen and (max-width: 700px) {
+    .filters {
+        display: flex;
+        flex-direction: column;
+    }
+        .filters > div {
+            margin-bottom: 10px;
+            width: 100% !important;
+        }
+        .filters > button {
+            width: 100% !important;
+            height: 40px;
+        }
+
+    .teachersContainer {
+        padding: 0px;
+        width: 100%;
+    }
+
+    .teacherCard {
+        margin: 10px;
+        height: 79px;
+        min-width: 180px;
+    }
+        .teacherCard img {
+            width: 57px;
+            height: 57px;
+        }
 }
