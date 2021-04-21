@@ -1,19 +1,43 @@
 .container {
+    height: calc(100vh - 16px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.filters {
     display: flex;
     flex-direction: row;
     justify-content: center;
     margin: 10px;
 }
 
-.container > div {
+.filters > div {
     margin-right: 10px;
 }
 
-.container > button {
+.filters > button {
     color: #fff;
     background-color: #06b0a6;
+    width: max-content;
 }
 
-.container > button:hover {
+.filters > button:hover {
     background-color: #009990;
+}
+
+.teachersContainer {
+    overflow-y: scroll;
+    max-height: calc(100vh - 134px);
+    margin: 0 151px;
+}
+
+.teacherCard {
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.loadMore {
+    width: max-content;
+    align-self: center;
 }
