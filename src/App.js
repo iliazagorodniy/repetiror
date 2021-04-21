@@ -184,7 +184,8 @@ class App extends Component {
 							? ""
 							: this.state.currentTeachers.map((item) => {
 								return (
-									<div key={item.id}>
+									<div key={item.id} className={"teacherCard"}>
+										<img src={item.photoPathSquare}/>
 										{item.firstName} {item.patrName} {item.minPricePerHour}
 									</div>
 								)

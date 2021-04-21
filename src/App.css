@@ -29,13 +29,29 @@
 .teachersContainer {
     overflow-y: scroll;
     max-height: calc(100vh - 134px);
-    margin: 0 151px;
+    margin: 0 140px;
+    padding: 8px;
 }
+    .teachersContainer .teacherCard:nth-child(1) {
+        margin-top: 0;
+    }
 
 .teacherCard {
+    height: 110px;
     box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
+    margin: 20px 0;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
+    .teacherCard img {
+        object-fit: cover;
+        width: 78px;
+        height: 78px;
+        border-radius: 39px;
+    }
 
 .loadMore {
     width: max-content;
